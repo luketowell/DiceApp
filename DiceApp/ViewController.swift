@@ -13,6 +13,8 @@ class ViewController: UIViewController {
     var randomDiceIndex1 : Int = 1
     var randomDiceIndex2 : Int = 1
     
+    let diceArray : [String] = ["dice1", "dice2", "dice3", "dice4", "dice5", "dice6"]
+    
     @IBOutlet weak var diceImageView1: UIImageView!
     @IBOutlet weak var diceImageView2: UIImageView!
     
@@ -31,30 +33,9 @@ class ViewController: UIViewController {
         randomDiceIndex2 = Int(arc4random_uniform(6) + 1)
         
         print(randomDiceIndex1,",",randomDiceIndex2)
-        changeImage(number: randomDiceIndex1, imageView: diceImageView1)
-        changeImage(number: randomDiceIndex2, imageView: diceImageView2)
+        diceImageView1.image = UIImage(named: diceArray[randomDiceIndex1 - 1])
+        diceImageView2.image = UIImage(named: diceArray[randomDiceIndex2 - 1])
         
-    }
-    
-    func changeImage (number : Int, imageView : UIImageView){
-        if (number == 1){
-            imageView.image = #imageLiteral(resourceName: "dice1")
-        }
-        else if (number == 2){
-            imageView.image = #imageLiteral(resourceName: "dice2")
-        }
-        else if (number == 3){
-            imageView.image = #imageLiteral(resourceName: "dice3")
-        }
-        else if (number == 4){
-            imageView.image = #imageLiteral(resourceName: "dice4")
-        }
-        else if (number == 5){
-            imageView.image = #imageLiteral(resourceName: "dice5")
-        }
-        else {
-            imageView.image = #imageLiteral(resourceName: "dice6")
-        }
     }
 
 }
