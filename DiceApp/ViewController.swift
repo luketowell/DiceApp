@@ -27,16 +27,22 @@ class ViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    override func motionEnded(_ motion: UIEventSubtype, with event: UIEvent?){
+        generateDice()
+    }
 
     @IBAction func rollButton(_ sender: UIButton) {
+        generateDice()
+    }
+    
+    func generateDice(){
         randomDiceIndex1 = Int(arc4random_uniform(6) + 1)
         randomDiceIndex2 = Int(arc4random_uniform(6) + 1)
         
-        print(randomDiceIndex1,",",randomDiceIndex2)
         diceImageView1.image = UIImage(named: diceArray[randomDiceIndex1 - 1])
         diceImageView2.image = UIImage(named: diceArray[randomDiceIndex2 - 1])
-        
     }
-
+    
 }
 
